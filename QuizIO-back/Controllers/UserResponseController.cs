@@ -49,7 +49,6 @@ namespace QuizIO_back.Controllers
             {
                 var userResponce = new UserResponse() 
                 {
-                    QuizID = userResponse.QuizID,
                     UserResponseID = userResponse.UserResponseID,
                     Username = userResponse.Username,
                     Answers = userResponse.Answers,
