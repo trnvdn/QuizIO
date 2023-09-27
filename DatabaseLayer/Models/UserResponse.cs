@@ -27,7 +27,6 @@ namespace DatabaseLayer.Models
 
         public UserResponse()
         {
-            UserResponseID = Guid.NewGuid().ToString();
             ExecutionDate = DateTime.Now;
         }
     }

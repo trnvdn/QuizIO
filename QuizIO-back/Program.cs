@@ -8,14 +8,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowDevelopmentOrigin", builder =>
-    {
-        builder
+    options.AddPolicy("CorsPolicy",
+        builder => builder
             .AllowAnyOrigin()
+            .AllowAnyMethod()
             .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
+            .WithExposedHeaders("Content-Disposition"));
 });
+
 builder.Services.Configure<RouteOptions>(options =>
 {
     options.ConstraintMap.Add("alphaNumericHyphen", typeof(RouteConstraint));
@@ -28,7 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("CorsPolicy");
 app.UseCors("AllowDevelopmentOrigin"); 
 
 app.UseHttpsRedirection();

@@ -19,11 +19,11 @@ public class QuizController : Controller
         _findAssignedQuizzes = new FindAssignedQuizzes();
     }
     
-    [HttpGet(Name = "GetQuizzes")]
+   /* [HttpGet(Name = "GetQuizzes")]
     public List<Quiz> GetQuizzes()
     {
         return _quizRepository.Retrieve();
-    }
+    }*/
     
     [HttpGet("id/{id:alphaNumericHyphen}", Name ="GetQuiz")]
     public Quiz GetQuiz(string id)
@@ -31,11 +31,11 @@ public class QuizController : Controller
         return _quizRepository.Retrieve(id);
     }
     
-    [HttpGet("quizName/{quizName:alphaNumericHyphen}", Name ="GetQuizByQuizName")]
+/*    [HttpGet("quizName/{quizName:alphaNumericHyphen}", Name ="GetQuizByQuizName")]
     public Quiz GetQuizByQuizName(string quizName)
     {
         return _quizRepository.RetrieveByQuizName(quizName);
-    }
+    }*/
     
     [HttpGet("assigned/{assigneUsername:alphaNumericHyphen}", Name ="GetAssignedQuizzes")]
     public List<Quiz> GetAssignedQuizzes(string assigneUsername)
@@ -48,15 +48,21 @@ public class QuizController : Controller
     {
         try
         {
-            var quizToInsert = new Quiz() 
-            {
-                QuizName = quiz.QuizName,
-                QuizDescription = quiz.QuizDescription,
-                Assignes = quiz.Assignes,
-                Questions = quiz.Questions,
-            };
-            _quizRepository.Insert(quizToInsert);
+            _quizRepository.Insert(quiz);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 
+    [HttpPost("update", Name = "UpdateQuiz")]
+    public IActionResult UpdateQuiz(Quiz quiz)
+    {
+        try
+        {
+            _quizRepository.Update(quiz);
             return Ok();
         }
         catch (Exception e)

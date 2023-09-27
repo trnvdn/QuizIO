@@ -75,7 +75,17 @@ public class QuizRepository
             AssignesJSON = @AssignesJSON, 
             QuestionsJSON = @QuestionsJSON 
             WHERE QuizID = @QuizID";
-            var response = connection.Execute(sqlCommand, quiz);
+
+            var parameters = new
+            {
+                quiz.QuizName,
+                quiz.QuizDescription,
+                quiz.AssignesJSON,
+                quiz.QuestionsJSON,
+                quiz.QuizID
+            };
+
+            var response = connection.Execute(sqlCommand, parameters);
             return response == 1;
         }
     }

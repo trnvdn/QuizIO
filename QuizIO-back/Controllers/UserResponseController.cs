@@ -18,22 +18,28 @@ namespace QuizIO_back.Controllers
             _userResponseRepository = new UserResponseRepository();
         }
 
-        [HttpGet(Name = "GetUserResponses")]
+/*        [HttpGet(Name = "GetUserResponses")]
         public List<UserResponse> GetUserResponses()
         {
             return _userResponseRepository.Retrieve();
-        }
+        }*/
 
-        [HttpGet("id/{id:alphaNumericHyphen}", Name ="GetUserResponse")]
+/*        [HttpGet("id/{id:alphaNumericHyphen}", Name ="GetUserResponse")]
         public UserResponse GetUserResponse(string id)
         {
             return _userResponseRepository.Retrieve(id);
-        }
+        }*/
 
         [HttpGet("username/{username:alphaNumericHyphen}", Name ="GetUserResponseByUsername")]
-        public UserResponse GetUserResponseByUsername(string username)
+        public List<UserResponse> GetUserResponseByUsername(string username)
         {
-            return _userResponseRepository.RetrieveByUsername(username);
+            return _userResponseRepository.RetrieveByUsername(username); ;
+        }
+
+        [HttpGet("username/{username:alphaNumericHyphen}/quizID/{quizID:alphaNumericHyphen}", Name = "GetUserResponseByUsernameAndQuizID")]
+        public UserResponse GetUserResponseByUsernameAndQuizID(string username, string quizID)
+        {
+            return _userResponseRepository.Retrieve(username,quizID);
         }
 
         [HttpGet("quizId/{quizId:alphaNumericHyphen}", Name ="GetUserResponseByQuizId")]
@@ -46,14 +52,8 @@ namespace QuizIO_back.Controllers
         public IActionResult InsertUserResponse(UserResponse userResponse)
         {
             try
-            {
-                var userResponce = new UserResponse() 
-                {
-                    UserResponseID = userResponse.UserResponseID,
-                    Username = userResponse.Username,
-                    Answers = userResponse.Answers,
-                };
-                _userResponseRepository.Insert(userResponce);
+            { 
+                _userResponseRepository.Insert(userResponse);
 
                 return Ok();
             }

@@ -1,0 +1,31 @@
+h1 {
+    margin: 3%;
+    text-align: center;
+}
+
+.Card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px;
+    background-color: #4da3d1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.QuizName {
+    font-size: 30px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.QuizDesc {
+    font-size: 25px;
+    color: #021414;
+    margin-bottom: 8px;
+}
+
+.QuizDate {
+    font-size: 14px;
+    color: #021414;
+}

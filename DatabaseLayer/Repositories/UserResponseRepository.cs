@@ -27,14 +27,23 @@ namespace DatabaseLayer.Repositories
                 return response;
             }
         }
-
-        public UserResponse RetrieveByUsername(string username)
+        public UserResponse Retrieve(string username, string quizID)
+        {
+            using (var connection = new SqlConnection(ConnectionSettings.ConnectionString))
+            {
+                connection.Open();
+                var sqlCommand = @"SELECT * FROM UserResponse WHERE Username = @username AND QuizID = @quizID";
+                var response = connection.QueryFirstOrDefault<UserResponse>(sqlCommand, new { username,quizID });
+                return response;
+            }
+        }
+        public List<UserResponse> RetrieveByUsername(string username)
         {
             using (var connection = new SqlConnection(ConnectionSettings.ConnectionString))
             {
                 connection.Open();
                 var sqlCommand = @"SELECT * FROM UserResponse WHERE Username = @username";
-                var response = connection.QueryFirstOrDefault<UserResponse>(sqlCommand, new { username });
+                var response = connection.Query<UserResponse>(sqlCommand, new { username }).AsList();
                 return response;
             }
         }

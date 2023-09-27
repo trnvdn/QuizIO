@@ -1,9 +1,9 @@
 import { React, useState } from 'react';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField'; 
-import Dialog from '@mui/material/Dialog'; 
-import DialogActions from '@mui/material/DialogActions'; 
-import DialogContent from '@mui/material/DialogContent'; 
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { Link } from 'react-router-dom';
 
@@ -34,12 +34,11 @@ const UsernameDialog = ({ open, setOpen }) => {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-            {/* Specify link */}
-            <Link to={`/user/${username}`} style={{ color: "primary" }}>
-                <Button color="primary">
-                  Continue
-                </Button>
-              </Link>
+          <Link to={`/assigned/${username}`} style={{ color: "primary" }}>
+            <Button color="primary">
+              Continue
+            </Button>
+          </Link>
         </DialogActions>
       </Dialog>
     </div>
