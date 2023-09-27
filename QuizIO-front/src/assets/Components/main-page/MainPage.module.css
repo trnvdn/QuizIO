@@ -1,0 +1,27 @@
+.Block{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    height: 100vh;
+}
+.Inscription{
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.Content {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.Content:hover {
+    transform: scale(1.1);
+    background-color: #468b8c;
+}
+.transparentButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
