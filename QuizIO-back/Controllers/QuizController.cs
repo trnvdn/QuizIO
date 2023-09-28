@@ -1,4 +1,5 @@
-﻿using DatabaseLayer.Models;
+﻿using BusinessLogicLayer.Services;
+using DatabaseLayer.Models;
 using DatabaseLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,12 +11,12 @@ public class QuizController : Controller
     private readonly ILogger<QuizController> _logger;
 
     private QuizRepository _quizRepository;
-    /*private FindAssignedQuizzes _findAssignedQuizzes;*/
+    private FindAssignedQuizzes _findAssignedQuizzes;
     public QuizController(ILogger<QuizController> logger)
     {
         _logger = logger;
         _quizRepository = new QuizRepository();
-        /*_findAssignedQuizzes = new FindAssignedQuizzes();*/
+        _findAssignedQuizzes = new FindAssignedQuizzes();
     }
     
     [HttpGet("id/{id:alphaNumericHyphen}", Name ="GetQuiz")]
@@ -25,10 +26,10 @@ public class QuizController : Controller
     }
     
     [HttpGet("assigned/{assigneUsername:alphaNumericHyphen}", Name ="GetAssignedQuizzes")]
-    /*public List<Quiz> GetAssignedQuizzes(string assigneUsername)
+    public List<Quiz> GetAssignedQuizzes(string assigneUsername)
     {
-       *//* return _findAssignedQuizzes.AssignedQuizzes(assigneUsername);*//*
-    }*/
+        return _findAssignedQuizzes.AssignedQuizzes(assigneUsername);
+    }
 
     [HttpPost(Name = "InsertQuiz")]
     public IActionResult InsertQuiz(Quiz quiz)
@@ -52,9 +53,10 @@ public class QuizController : Controller
             _quizRepository.Update(quiz);
             return Ok();
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            return BadRequest(e.Message);
+            _logger.LogError(ex, "Error quiz upd");
+            return BadRequest(ex.Message);
         }
     }
 }
