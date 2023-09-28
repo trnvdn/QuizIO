@@ -18,18 +18,6 @@ namespace QuizIO_back.Controllers
             _userResponseRepository = new UserResponseRepository();
         }
 
-/*        [HttpGet(Name = "GetUserResponses")]
-        public List<UserResponse> GetUserResponses()
-        {
-            return _userResponseRepository.Retrieve();
-        }*/
-
-/*        [HttpGet("id/{id:alphaNumericHyphen}", Name ="GetUserResponse")]
-        public UserResponse GetUserResponse(string id)
-        {
-            return _userResponseRepository.Retrieve(id);
-        }*/
-
         [HttpGet("username/{username:alphaNumericHyphen}", Name ="GetUserResponseByUsername")]
         public List<UserResponse> GetUserResponseByUsername(string username)
         {
@@ -52,8 +40,16 @@ namespace QuizIO_back.Controllers
         public IActionResult InsertUserResponse(UserResponse userResponse)
         {
             try
-            { 
-                _userResponseRepository.Insert(userResponse);
+            {
+                var userResponce = new UserResponse() 
+                {
+                    UserResponseID = Guid.NewGuid().ToString(),
+                    QuizID = userResponse.QuizID,
+                    Username = userResponse.Username,
+                    Answers = userResponse.Answers,
+                };
+
+                _userResponseRepository.Insert(userResponce);
 
                 return Ok();
             }

@@ -17,16 +17,6 @@ namespace DatabaseLayer.Repositories
             }
         }
 
-        public UserResponse Retrieve(string id)
-        {
-            using (var connection = new SqlConnection(ConnectionSettings.ConnectionString))
-            {
-                connection.Open();
-                var sqlCommand = @"SELECT * FROM UserResponse WHERE UserResponseID = @id";
-                var response = connection.QueryFirstOrDefault<UserResponse>(sqlCommand, new { id });
-                return response;
-            }
-        }
         public UserResponse Retrieve(string username, string quizID)
         {
             using (var connection = new SqlConnection(ConnectionSettings.ConnectionString))

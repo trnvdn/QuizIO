@@ -9,7 +9,7 @@ import { UserResponseMock } from "../quiz/UserResponseMock";
 
 const UserResponse = () => {
   const { username, quizID } = useParams();
-  const [userResponse, setUserResponse] = useState(UserResponseMock.getMock());
+  const [userResponse, setUserResponse] = useState(UserResponseMock.getMockByUsername());
   const [quiz, setQuiz] = useState();
 
   useEffect(() => {

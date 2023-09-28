@@ -11,7 +11,7 @@ const Quiz = () => {
   const { username, quizID } = useParams();
   const navigate = useNavigate();
   
-  const userResponseMock = UserResponseMock.getMock(username, quizID);
+  const userResponseMock = UserResponseMock.getMock(quizID,username);
   const initialQuiz = QuizMock.getMock();
   
   const [quiz, setQuiz] = useState(initialQuiz);
@@ -31,21 +31,21 @@ const Quiz = () => {
     fetchQuiz();
   }, [quizID]);
 
-  const handleAnswerQuestion = () => {
+  const handleAnswerQuestion = async () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex === quiz.questions.length - 1) {
       const updatedAssignes = quiz.assignes.filter((user) => user !== username);
       const updatedQuiz = { ...quiz, assignes: updatedAssignes };
-      console.log(userResponse);
-      UserResponseService.insertResponse(userResponse)
-        .then(() => {
-          navigate(`/result/${username}/${quizID}/`);
-        })
-        .catch((error) => {
-          console.error("Error inserting response:", error);
-        });
+      try {
+        await UserResponseService.insertResponse(userResponse);
+        await QuizService.updateQuiz(updatedQuiz);
+        navigate(`/result/${username}/${quizID}/`);
+      } catch (error) {
+        console.error("Error inserting response:", error);
+      }
     }
   };
+  
 
   const currentQuestion = quiz.questions
     ? quiz.questions[currentQuestionIndex]

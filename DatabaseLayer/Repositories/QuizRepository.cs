@@ -25,16 +25,6 @@ public class QuizRepository
             return response;
         }
     }
-    
-    public Quiz RetrieveByQuizName(string quizName)
-    {
-        using (var connection = new SqlConnection(ConnectionSettings.ConnectionString))
-        {
-            var sqlCommand = @"SELECT * FROM Quiz WHERE QuizName = @quizName";
-            var response = connection.QueryFirstOrDefault<Quiz>(sqlCommand, new { quizName });
-            return response;
-        }
-    }
 
     public bool Insert(Quiz quiz)
     {

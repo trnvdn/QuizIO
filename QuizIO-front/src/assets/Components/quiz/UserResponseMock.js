@@ -1,22 +1,24 @@
 export const UserResponseMock = {
     getMock(quizId, username) {
       const mockUserResponse = {
+        userResponseID: "",
         quizID: quizId,
-        username: username,
+        username,
         answers: [],
         score: 0,
-        executionDate: new Date().toISOString(),
+        executionDate: new Date(),
       };
       return mockUserResponse;
     },
-    getMock(username)
+    getMockByUsername(username)
     {
       const mockUserResponse = {
+        userResponseID: "",
         quizID: "",
-        username: username,
+        username,
         answers: [],
         score: 0,
-        executionDate: new Date().toISOString(),
+        executionDate: new Date(),
       };
       return mockUserResponse;
     }

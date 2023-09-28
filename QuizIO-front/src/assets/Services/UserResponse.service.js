@@ -2,7 +2,8 @@ import axios from "axios";
 
 const API_BASE_URL = "https://localhost:7299";
 
-const validateNonEmptyString = (value) => typeof value === "string" && value.trim() !== "";
+const validateNonEmptyString = (value) =>
+  typeof value === "string" && value.trim() !== "";
 
 export const UserResponseService = {
   async getResponsesByUsername(username) {
@@ -11,7 +12,9 @@ export const UserResponseService = {
     }
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/UserResponse/username/${username}`);
+      const response = await axios.get(
+        `${API_BASE_URL}/UserResponse/username/${username}`
+      );
       return response.data;
     } catch (error) {
       console.error("Error fetching user responses by username:", error);
@@ -25,10 +28,15 @@ export const UserResponseService = {
     }
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/UserResponse/username/${username}/quizID/${quizId}`);
+      const response = await axios.get(
+        `${API_BASE_URL}/UserResponse/username/${username}/quizID/${quizId}`
+      );
       return response.data;
     } catch (error) {
-      console.error("Error fetching user response by username and quiz ID:", error);
+      console.error(
+        "Error fetching user response by username and quiz ID:",
+        error
+      );
       return [];
     }
   },
@@ -36,8 +44,17 @@ export const UserResponseService = {
   async insertResponse(userResponse) {
     if (userResponse && Object.keys(userResponse).length > 0) {
       try {
-        console.log("Inserting user response:", userResponse);
-        const response = await axios.post(`${API_BASE_URL}/UserResponse`, userResponse);
+        const dataToInsert = {
+          userResponseID: userResponse.userResponseID,
+          quizID: userResponse.quizID,
+          username: userResponse.username,
+          answers: userResponse.answers,
+        };
+
+        const response = await axios.post(
+          `${API_BASE_URL}/UserResponse`,
+          dataToInsert
+        );
         return response.data;
       } catch (error) {
         console.error("Error inserting user response:", error);

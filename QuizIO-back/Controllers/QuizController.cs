@@ -19,23 +19,11 @@ public class QuizController : Controller
         _findAssignedQuizzes = new FindAssignedQuizzes();
     }
     
-   /* [HttpGet(Name = "GetQuizzes")]
-    public List<Quiz> GetQuizzes()
-    {
-        return _quizRepository.Retrieve();
-    }*/
-    
     [HttpGet("id/{id:alphaNumericHyphen}", Name ="GetQuiz")]
     public Quiz GetQuiz(string id)
     {
         return _quizRepository.Retrieve(id);
     }
-    
-/*    [HttpGet("quizName/{quizName:alphaNumericHyphen}", Name ="GetQuizByQuizName")]
-    public Quiz GetQuizByQuizName(string quizName)
-    {
-        return _quizRepository.RetrieveByQuizName(quizName);
-    }*/
     
     [HttpGet("assigned/{assigneUsername:alphaNumericHyphen}", Name ="GetAssignedQuizzes")]
     public List<Quiz> GetAssignedQuizzes(string assigneUsername)

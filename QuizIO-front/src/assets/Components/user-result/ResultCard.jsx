@@ -16,7 +16,7 @@ const ResultCard = ({ userResponse, quiz }) => {
         <h1 className={styles.quizTitle}>{quiz.quizName}</h1>
         <div className={styles.userInfo}>
           <h2>Assigned to: {userResponse.username}</h2>
-          <h2>Score: {userResponse.score}</h2>
+          <h2>Score: {userResponse.score}/{quiz.totalPoints}</h2>
         </div>
         <p className={styles.quizDescription}>{quiz.quizDescription}</p>
         <div className={styles.dateInfo}>
