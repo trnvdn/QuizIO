@@ -39,7 +39,7 @@ export const QuizService = {
   async updateQuiz(quiz) {
     if (quiz && Object.keys(quiz).length > 0) {
       try {
-        const response = await axios.post(`${API_BASE_URL}/Quiz/update`, quiz);
+        const response = await axios.put(`${API_BASE_URL}/Quiz/update`, quiz);
         return response.data;
       } catch (error) {
         console.error("Error updating quiz:", error);

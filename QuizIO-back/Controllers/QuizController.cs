@@ -45,7 +45,7 @@ public class QuizController : Controller
         }
     }
 
-    [HttpPost("update", Name = "UpdateQuiz")]
+    [HttpPut("update", Name = "UpdateQuiz")]
     public IActionResult UpdateQuiz(Quiz quiz)
     {
         try
