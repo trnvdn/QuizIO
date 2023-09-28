@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizIO-back", "QuizIO-back.csproj", "{C088DA6B-77D6-4815-8FE5-5BF042304E39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLayer", "..\DatabaseLayer\DatabaseLayer.csproj", "{D9AE3D02-29F2-47E3-A1AB-CFFDB8E2581E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseLayer", "..\DatabaseLayer\DatabaseLayer.csproj", "{D9AE3D02-29F2-47E3-A1AB-CFFDB8E2581E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{A7B5E05E-E24A-4A97-9245-B3975928B35D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "..\BussinessLogicLayer\BusinessLogicLayer.csproj", "{034787B7-D9F7-479F-A902-D9DB1437FE9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{D9AE3D02-29F2-47E3-A1AB-CFFDB8E2581E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9AE3D02-29F2-47E3-A1AB-CFFDB8E2581E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9AE3D02-29F2-47E3-A1AB-CFFDB8E2581E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7B5E05E-E24A-4A97-9245-B3975928B35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7B5E05E-E24A-4A97-9245-B3975928B35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7B5E05E-E24A-4A97-9245-B3975928B35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7B5E05E-E24A-4A97-9245-B3975928B35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034787B7-D9F7-479F-A902-D9DB1437FE9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034787B7-D9F7-479F-A902-D9DB1437FE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034787B7-D9F7-479F-A902-D9DB1437FE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034787B7-D9F7-479F-A902-D9DB1437FE9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
