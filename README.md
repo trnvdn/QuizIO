@@ -1,3 +1,4 @@
+# QuizIO
 QuizIO is a web application designed for taking and viewing assigned and created quizzes. The app provides the user with a user-friendly interface to view and take quizzes and view results. An important aspect of the application is the lack of functionality for creating new quizzes and registering users. The main purpose of QuizIO is to provide access to already created quizzes and the results of their completion.
 
 Main features:
