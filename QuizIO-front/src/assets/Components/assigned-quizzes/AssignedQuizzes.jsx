@@ -14,7 +14,7 @@ const AssignedQuizzes = () => {
       try {
         const data = await QuizService.getAssignedQuizzes(username);
         setQuizzes(data);
-        setDataLoaded(true); 
+        setDataLoaded(true);
       } catch (error) {
         console.error("Error fetching quizzes:", error);
       }
@@ -26,6 +26,7 @@ const AssignedQuizzes = () => {
   return (
     <div>
       <div className={styles.buttonContainer}>
+        <Link to="/" className={styles.navButton}>Back to main page</Link>
         <h1>Assigned quizzes</h1>
         <Link to={`/responses/${username}`} className={styles.navButton}>
           Your responses
@@ -33,7 +34,10 @@ const AssignedQuizzes = () => {
       </div>
       {dataLoaded ? (
         quizzes.length === 0 ? (
-          <h2 className={styles.EmptyListTitle}>There are currently no tests available for you. Try usernames like test,user1,user2,user3,user4</h2>
+          <h2 className={styles.EmptyListTitle}>
+            There are currently no tests available for you. Try usernames like
+            test,user1,user2,user3,user4
+          </h2>
         ) : (
           quizzes.map((quiz) => (
             <Link

@@ -7,7 +7,7 @@ import ResponseCard from "./response-card/ResponseCard";
 const UserResponses = () => {
   const { username } = useParams();
   const [userResponses, setUserResponses] = useState([]);
-  const [dataLoaded, setDataLoaded] = useState(false); 
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     const fetchResponses = async () => {
@@ -26,6 +26,7 @@ const UserResponses = () => {
   return (
     <div>
       <div className={styles.buttonContainer}>
+        <Link to="/" className={styles.navButton}>Back to main page</Link>
         <h1>Responses</h1>
         <Link to={`/assigned/${username}`} className={styles.navButton}>
           Assigned quizzes
@@ -34,7 +35,9 @@ const UserResponses = () => {
       <div>
         {dataLoaded ? (
           userResponses.length === 0 ? (
-            <h2 className={styles.EmptyListTitle}>No responses available at the moment.</h2>
+            <h2 className={styles.EmptyListTitle}>
+              No responses available at the moment.
+            </h2>
           ) : (
             userResponses.map((userResponse) => (
               <Link
