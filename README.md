@@ -21,7 +21,6 @@ If you did everything correctly, the main page will open in front of you.
 
 ❗❗❗**Warning**❗❗❗
 
-To add a mock quiz, click the Create New Quiz button in the main menu, and then enter the name of the assigned user
 You can take already created quizzes by choosing one of the following usernames
 
 - test
