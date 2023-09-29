@@ -30,7 +30,7 @@ You can take already created quizzes by choosing one of the following usernames
 - user3
 - user4
 **UPD**
-To add a mock quiz, click the Create New Quiz button in the main menu, and then enter the name of the assigned user
+To add a mock quiz, click the **CREATE NEW QUIZ** button in the main menu, and then enter the name of the assigned user
 
 Main features:
 
