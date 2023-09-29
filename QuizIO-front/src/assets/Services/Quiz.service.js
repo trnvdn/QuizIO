@@ -1,4 +1,5 @@
 import axios from "axios";
+import { QuizMock } from "../Components/quiz/QuizMock";
 
 const API_BASE_URL = "https://localhost:7299";
 
@@ -46,6 +47,19 @@ export const QuizService = {
         return [];
       }
     } else {
+      return [];
+    }
+  },
+
+  async insertQuiz(assigneUsername) {
+    if (!validateNonEmptyString(assigneUsername)) {
+      return [];
+    }
+    try {
+      const response = await axios.post(`${API_BASE_URL}/Quiz/${assigneUsername}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error inserting quiz:", error);
       return [];
     }
   },

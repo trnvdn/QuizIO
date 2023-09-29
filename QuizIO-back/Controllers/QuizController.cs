@@ -45,6 +45,57 @@ public class QuizController : Controller
         }
     }
 
+    [HttpPost("{username:alphaNumericHyphen}", Name = "InsertQuizByUsername")]
+    public IActionResult InsertQuizByUsername(string username)
+    {
+        try
+        {
+            var quiz = new Quiz()
+            {
+                QuizID = Guid.NewGuid().ToString(),
+                QuizDescription = "Inserted quiz",
+                QuizName = "Inserted quiz",
+                Assignes = new List<string>() { username },
+                Questions = new List<Question>()
+                {
+                    new Question()
+                    {
+                        QuestionDetails = "Question 1",
+                        Answers = new List<Answer>()
+                        {
+                            new Answer()
+                            {
+                                AnswerDetails = "Option1",
+                                IsCorrect = true
+                            },
+                            new Answer()
+                            {
+                                AnswerDetails = "Option2",
+                                IsCorrect = false
+                            },
+                            new Answer()
+                            {
+                                AnswerDetails = "Option3",
+                                IsCorrect = false
+                            },
+                            new Answer()
+                            {
+                                AnswerDetails = "Option4",
+                                IsCorrect = false
+                            }
+                        }
+                    }
+                }
+            };
+            _quizRepository.Insert(quiz);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
     [HttpPut("update", Name = "UpdateQuiz")]
     public IActionResult UpdateQuiz(Quiz quiz)
     {

@@ -10,6 +10,7 @@ namespace DatabaseLayer.Models
         public string QuizDescription { get; set; }
         public DateTime QuizCreationDate { get; private set; }
 
+
         [NotMapped]
         public List<string> Assignes
         {

@@ -6,19 +6,29 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { Link } from 'react-router-dom';
+import { QuizService } from '../../Services/Quiz.service';
 
-const UsernameDialog = ({ open, setOpen }) => {
+const UsernameDialog = ({ open, setOpen, text }) => {
   const [username, setUsername] = useState('');
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const insertQuiz = () => {
+    console.log(text);
+    console.log(username);
+    if (text === 'Enter username assignee for quiz.') {
+      QuizService.insertQuiz(username);
+    }
+  }
+
   return (
     <div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogContent>
           <DialogContentText>
-            To log in to this website, please enter your username here.
+            {text}
           </DialogContentText>
           <TextField
             autoFocus
@@ -35,7 +45,7 @@ const UsernameDialog = ({ open, setOpen }) => {
             Cancel
           </Button>
           <Link to={`/assigned/${username}`} style={{ color: "primary" }}>
-            <Button color="primary">
+            <Button color="primary" onClick={insertQuiz}>
               Continue
             </Button>
           </Link>
