@@ -21,13 +21,16 @@ If you did everything correctly, the main page will open in front of you.
 
 ❗❗❗**Warning**❗❗❗
 
-At the moment it is not possible to add quizzes, therefore already created ones are used. To pass a certain quiz, you must enter one of the following options in the username field when logging in:
+To add a mock quiz, click the Create New Quiz button in the main menu, and then enter the name of the assigned user
+You can take already created quizzes by choosing one of the following usernames
 
 - test
 - user1
 - user2
 - user3
 - user4
+**UPD**
+To add a mock quiz, click the Create New Quiz button in the main menu, and then enter the name of the assigned user
 
 Main features:
 
